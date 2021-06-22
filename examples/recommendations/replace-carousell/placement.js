@@ -1,6 +1,6 @@
 const React = require('preact')
 const {
-  insertAfter,
+  insertBefore,
   onEnterViewport,
   style,
   restoreAll
@@ -18,7 +18,7 @@ module.exports = function renderPlacement ({
   onRemove(restoreAll)
 
   const el = document.createElement('div')
-  insertAfter(target, el)
+  insertBefore(target, el)
   onEnterViewport(el, onImpression)
 
   if (content) {
