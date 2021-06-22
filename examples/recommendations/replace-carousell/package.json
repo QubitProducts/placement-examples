@@ -1,0 +1,12 @@
+{
+    "dependencies": {
+      "@glidejs/glide": "*",
+      "@qubit/utils": "*",
+      "preact": "*"
+    },
+    "devDependencies": {
+      "healthier": "^4.0.0",
+      "prettier-standard": "^16.4.1"
+    }
+  }
+  

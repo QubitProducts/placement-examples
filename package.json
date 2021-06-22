@@ -1,0 +1,11 @@
+{
+  "name": "placement-examples",
+  "version": "1.0.0",
+  "description": "Qubit example placement builds for q4m",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest --coverage"
+  },
+  "author": "",
+  "license": "ISC"
+}
