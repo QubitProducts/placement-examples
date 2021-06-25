@@ -24,6 +24,10 @@ module.exports = function renderPlacement ({
   onEnterViewport(el, onImpression)
 
   if (content) {
+    onEnterViewport(
+      target,
+      content.recs.map(item => item.details.id)
+    )
     renderCarousel(content, el)
     style(target, { display: 'none' })
   } else {
@@ -50,11 +54,6 @@ module.exports = function renderPlacement ({
 
   function Product ({ item }) {
     const { id, name, unit_price, currency, image_url, url } = item
-
-    if (id) {
-      // Emit product impression events for the variant
-      onEnterViewport(target, () => onImpression('product', id))
-    }
 
     const price =
       Intl && Intl.NumberFormat
