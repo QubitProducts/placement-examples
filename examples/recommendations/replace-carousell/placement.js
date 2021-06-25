@@ -19,18 +19,22 @@ module.exports = function renderPlacement ({
 
   const el = document.createElement('div')
   insertBefore(target, el)
+
+  // Emitting onImpression before branching into control/variant prevents bad splits
   onEnterViewport(el, onImpression)
 
   if (content) {
     renderCarousel(content, el)
     style(target, { display: 'none' })
+  } else {
+    emitProductEvents()
   }
 
   function renderCarousel (content, el) {
     const { headline, recs } = content
     React.render(
       <div id='glide' className='RecsContainer' onClick={onClickthrough}>
-        <h3>{headline}</h3>
+        <h3 className='RecsContainer-headline'>{headline}</h3>
         <div className='RecsContainer-carousel' data-glide-el='track'>
           <ul className='RecsContainer-slides glide__slides'>
             {recs.map(({ details }, idx) => (
@@ -48,6 +52,7 @@ module.exports = function renderPlacement ({
     const { id, name, unit_price, currency, image_url, url } = item
 
     if (id) {
+      // Emit product impression events for the variant
       onEnterViewport(target, () => onImpression('product', id))
     }
 
@@ -72,5 +77,9 @@ module.exports = function renderPlacement ({
         <span className='RecsContainer-productPrice'>{price}</span>
       </li>
     )
+  }
+
+  function emitProductEvents () {
+    // Emit product impression events and setup product clickthough handlers for the control
   }
 }
