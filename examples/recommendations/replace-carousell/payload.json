@@ -1,0 +1,35 @@
+{
+  "headline": "Recommendations",
+  "recs": [
+    {
+      "details": {
+        "id": "1",
+        "name": "Product 1",
+        "currency": "gbp",
+        "unit_price": 10,
+        "image_url": "https://example.qubit/1.png",
+        "url": "https://example.qubit/1"
+      }
+    },
+    {
+      "details": {
+        "id": "2",
+        "name": "Product 2",
+        "currency": "gbp",
+        "unit_price": 20,
+        "image_url": "https://example.qubit/2.png",
+        "url": "https://example.qubit/2"
+      }
+    },
+    {
+      "details": {
+        "id": "3",
+        "name": "Product 3",
+        "currency": "gbp",
+        "unit_price": 30,
+        "image_url": "https://example.qubit/3.png",
+        "url": "https://example.qubit/3"
+      }
+    }
+  ]
+}

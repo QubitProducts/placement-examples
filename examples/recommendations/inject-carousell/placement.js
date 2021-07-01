@@ -5,7 +5,7 @@ const {
   restoreAll
 } = require('@qubit/utils/dom')()
 
-const Glide = require('@glidejs/glide').default
+const Glide = require('@glidejs/glide')
 
 module.exports = function renderPlacement ({
   elements: [target],
@@ -23,9 +23,11 @@ module.exports = function renderPlacement ({
   onEnterViewport(el, onImpression)
 
   if (content) {
-    onEnterViewport(
-      target,
-      content.recs.map(item => item.details.id)
+    onEnterViewport(target, () =>
+      onImpression(
+        'product',
+        content.recs.map(item => item.details.id)
+      )
     )
     renderCarousel(content, el)
   }
