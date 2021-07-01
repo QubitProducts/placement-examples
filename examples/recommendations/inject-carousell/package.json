@@ -1,0 +1,38 @@
+{
+  "name": "inject-carousell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "placement.js",
+  "dependencies": {
+    "@glidejs/glide": "*",
+    "@qubit/utils": "*",
+    "preact": "*"
+  },
+  "devDependencies": {
+    "@qubit/jest": "^1.4.0",
+    "healthier": "^4.0.0",
+    "jest": "^26.6.3",
+    "prettier-standard": "^15.0.1"
+  },
+  "jest": {
+    "transform": {
+      ".*$": "@qubit/jest"
+    }
+  },
+  "scripts": {
+    "lint": "healthier",
+    "format": "prettier-standard",
+    "test": "jest --coverage"
+  },
+  "healthier": {
+    "global": [
+      "describe",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "it",
+      "expect"
+    ]
+  }
+}
