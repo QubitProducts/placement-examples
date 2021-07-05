@@ -25,7 +25,10 @@ module.exports = function renderPlacement ({
 
   if (content) {
     onEnterViewport(target, () =>
-      onImpression('product', content.recs.map(item => item.details.id))
+      onImpression(
+        'product',
+        content.recs.map(item => item.details.id)
+      )
     )
     renderCarousel(content, el)
     style(target, { display: 'none' })
@@ -61,13 +64,10 @@ module.exports = function renderPlacement ({
       unit_price: unitPrice
     } = item
 
-    const price =
-      Intl && Intl.NumberFormat
-        ? new Intl.NumberFormat(navigator.language, {
-            style: 'currency',
-            currency: currency
-          }).format(unitPrice)
-        : unitPrice
+    const price = new Intl.NumberFormat(navigator.language, {
+      style: 'currency',
+      currency: currency
+    }).format(unitPrice)
 
     return (
       <li className='RecsContainer-product glide__slide'>
