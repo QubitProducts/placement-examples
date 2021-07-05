@@ -3,17 +3,17 @@ const content = require('./payload.json')
 const renderPlacement = require('./placement')
 
 describe('placement.js', () => {
-  let placement
+  let fixture
 
   afterEach(() => {
-    placement.teardown()
+    fixture.teardown()
     document.body.innerHTML = ''
   })
 
   describe('with content', () => {
     beforeEach(() => {
-      placement = setup({ content, elements: [createRecs()] })
-      return renderPlacement(placement.api)
+      fixture = setup({ content, elements: [createRecs()] })
+      return renderPlacement(fixture.api)
     })
 
     it('hides the existing caroucell', () => {
@@ -25,13 +25,13 @@ describe('placement.js', () => {
     it('renders products', () => {
       expect(
         document.querySelectorAll('.RecsContainer-product').length
-      ).toEqual(placement.api.content.recs.length)
+      ).toEqual(fixture.api.content.recs.length)
     })
 
     it('renders product urls', () => {
       const container = document.querySelector('.RecsContainer')
 
-      for (const item of placement.api.content.recs) {
+      for (const item of fixture.api.content.recs) {
         expect(container.innerHTML).toEqual(
           expect.stringContaining(item.details.url)
         )
@@ -41,7 +41,7 @@ describe('placement.js', () => {
     it('renders product images', () => {
       const container = document.querySelector('.RecsContainer')
 
-      for (const item of placement.api.content.recs) {
+      for (const item of fixture.api.content.recs) {
         expect(container.innerHTML).toEqual(
           expect.stringContaining(item.details.image_url)
         )
@@ -49,11 +49,11 @@ describe('placement.js', () => {
     })
 
     it('calls onImpression', () => {
-      expect(placement.api.onImpression.mock.calls[0]).toEqual([])
+      expect(fixture.api.onImpression.mock.calls[0]).toEqual([])
     })
 
     it('calls onImpression(product, productId)', () => {
-      expect(placement.api.onImpression.mock.calls[1]).toEqual([
+      expect(fixture.api.onImpression.mock.calls[1]).toEqual([
         'product',
         ['1', '2', '3']
       ])
@@ -61,17 +61,17 @@ describe('placement.js', () => {
 
     it('calls onClickthrough', () => {
       const container = document.querySelector('.RecsContainer')
-      expect(placement.api.onClickthrough.mock.calls.length).toBe(0)
+      expect(fixture.api.onClickthrough.mock.calls.length).toBe(0)
       container.click()
-      expect(placement.api.onClickthrough.mock.calls.length).toBe(1)
+      expect(fixture.api.onClickthrough.mock.calls.length).toBe(1)
     })
 
     it('calls onClickthrough(product, productId)', () => {
       const links = document.querySelectorAll('.RecsContainer a')
-      expect(placement.api.onClickthrough.mock.calls.length).toBe(0)
+      expect(fixture.api.onClickthrough.mock.calls.length).toBe(0)
       links.forEach(link => link.click())
       expect(
-        placement.api.onClickthrough.mock.calls
+        fixture.api.onClickthrough.mock.calls
           .filter(([type, id]) => type === 'product')
           .map(([type, id]) => id)
       ).toEqual(['1', '2', '3'])
@@ -80,19 +80,19 @@ describe('placement.js', () => {
     it('cleans up after itself', () => {
       const el = document.querySelector('.RecsContainer')
       expect(document.body.contains(el)).toEqual(true)
-      placement.teardown()
+      fixture.teardown()
       expect(document.body.contains(el)).toEqual(false)
     })
   })
 
   describe('with null content', () => {
     beforeEach(() => {
-      placement = setup({ content: null, elements: [createRecs()] })
-      return renderPlacement(placement.api)
+      fixture = setup({ content: null, elements: [createRecs()] })
+      return renderPlacement(fixture.api)
     })
 
     it('calls onImpression', () => {
-      expect(placement.api.onImpression.mock.calls.length).toBe(1)
+      expect(fixture.api.onImpression.mock.calls.length).toBe(1)
     })
   })
 })
