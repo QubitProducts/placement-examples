@@ -16,7 +16,7 @@
   },
   "jest": {
     "transform": {
-      ".*$": "@qubit/jest"
+      ".*(.js|.css|.less)$": "@qubit/jest"
     }
   },
   "scripts": {
