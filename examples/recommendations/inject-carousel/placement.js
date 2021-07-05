@@ -47,7 +47,7 @@ module.exports = function renderPlacement ({
       </div>,
       el
     )
-    new Glide('#glide', { perView: 5, autoplay: 3000 }).mount()
+    new Glide('#glide', { perView: recs.length }).mount()
   }
 
   function Product ({ item }) {
