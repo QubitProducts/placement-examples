@@ -1,5 +1,6 @@
-const renderPlacement = require('../placement')
 const setup = require('@qubit/jest/setup')
+const content = require('./payload.json')
+const renderPlacement = require('./placement')
 
 describe('placement.js', () => {
   let api, teardown
@@ -14,6 +15,17 @@ describe('placement.js', () => {
   })
 
   describe('with content', () => {
+    beforeEach(() => {
+      api.content = content
+    })
+
+    it('hides the existing caroucell', () => {
+      renderPlacement(api)
+      expect(
+        window.getComputedStyle(document.querySelector('.recs')).display
+      ).toEqual('none')
+    })
+
     it('renders products', () => {
       renderPlacement(api)
       expect(
