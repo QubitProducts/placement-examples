@@ -4,9 +4,9 @@
   "description": "",
   "main": "placement.js",
   "dependencies": {
-    "@glidejs/glide": "*",
-    "@qubit/utils": "*",
-    "preact": "*"
+    "@glidejs/glide": "^3.4.1",
+    "@qubit/utils": "^1.3.3",
+    "preact": "^10.5.14"
   },
   "devDependencies": {
     "@qubit/jest": "^1.4.0",
@@ -16,7 +16,7 @@
   },
   "jest": {
     "transform": {
-      ".*$": "@qubit/jest"
+      ".*(.js|.css|.less)$": "@qubit/jest"
     }
   },
   "scripts": {

@@ -1,32 +1,31 @@
-const renderPlacement = require('../placement')
 const setup = require('@qubit/jest/setup')
+const content = require('./payload.json')
+const renderPlacement = require('./placement')
 
 describe('placement.js', () => {
-  let api, teardown
-
-  beforeEach(() => {
-    ;({ api, teardown } = setup({ elements: [createRecs()] }))
-  })
+  let placement
 
   afterEach(() => {
-    teardown()
+    placement.teardown()
     document.body.innerHTML = ''
   })
 
   describe('with content', () => {
+    beforeEach(() => {
+      placement = setup({ content, elements: [createRecs()] })
+      return renderPlacement(placement.api)
+    })
+
     it('renders products', () => {
-      renderPlacement(api)
       expect(
         document.querySelectorAll('.RecsContainer-product').length
-      ).toEqual(api.content.recs.length)
+      ).toEqual(placement.api.content.recs.length)
     })
 
     it('renders product urls', () => {
-      renderPlacement(api)
-
       const container = document.querySelector('.RecsContainer')
 
-      for (const item of api.content.recs) {
+      for (const item of placement.api.content.recs) {
         expect(container.innerHTML).toEqual(
           expect.stringContaining(item.details.url)
         )
@@ -34,11 +33,9 @@ describe('placement.js', () => {
     })
 
     it('renders product images', () => {
-      renderPlacement(api)
-
       const container = document.querySelector('.RecsContainer')
 
-      for (const item of api.content.recs) {
+      for (const item of placement.api.content.recs) {
         expect(container.innerHTML).toEqual(
           expect.stringContaining(item.details.image_url)
         )
@@ -46,58 +43,50 @@ describe('placement.js', () => {
     })
 
     it('calls onImpression', () => {
-      renderPlacement(api)
-
-      expect(api.onImpression.mock.calls[0]).toEqual([])
+      expect(placement.api.onImpression.mock.calls[0]).toEqual([])
     })
 
     it('calls onImpression(product, productId)', () => {
-      renderPlacement(api)
-
-      expect(api.onImpression.mock.calls[1]).toEqual([
+      expect(placement.api.onImpression.mock.calls[1]).toEqual([
         'product',
         ['1', '2', '3']
       ])
     })
 
     it('calls onClickthrough', () => {
-      renderPlacement(api)
       const container = document.querySelector('.RecsContainer')
-      expect(api.onClickthrough.mock.calls.length).toBe(0)
+      expect(placement.api.onClickthrough.mock.calls.length).toBe(0)
       container.click()
-      expect(api.onClickthrough.mock.calls.length).toBe(1)
+      expect(placement.api.onClickthrough.mock.calls.length).toBe(1)
     })
 
     it('calls onClickthrough(product, productId)', () => {
-      renderPlacement(api)
       const links = document.querySelectorAll('.RecsContainer a')
-      expect(api.onClickthrough.mock.calls.length).toBe(0)
+      expect(placement.api.onClickthrough.mock.calls.length).toBe(0)
       links.forEach(link => link.click())
       expect(
-        api.onClickthrough.mock.calls
+        placement.api.onClickthrough.mock.calls
           .filter(([type, id]) => type === 'product')
           .map(([type, id]) => id)
       ).toEqual(['1', '2', '3'])
     })
 
     it('cleans up after itself', () => {
-      renderPlacement(api)
       const el = document.querySelector('.RecsContainer')
       expect(document.body.contains(el)).toEqual(true)
-      teardown()
+      placement.teardown()
       expect(document.body.contains(el)).toEqual(false)
     })
   })
 
   describe('with null content', () => {
     beforeEach(() => {
-      api.content = null
+      placement = setup({ content: null, elements: [createRecs()] })
+      return renderPlacement(placement.api)
     })
 
     it('calls onImpression', () => {
-      renderPlacement(api)
-
-      expect(api.onImpression.mock.calls.length).toBe(1)
+      expect(placement.api.onImpression.mock.calls.length).toBe(1)
     })
   })
 })
