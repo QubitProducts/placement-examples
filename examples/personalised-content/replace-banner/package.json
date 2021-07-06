@@ -1,5 +1,5 @@
 {
-  "name": "inject-carousel",
+  "name": "replace-banner",
   "version": "1.0.0",
   "description": "",
   "main": "placement.js",
@@ -34,5 +34,12 @@
       "it",
       "expect"
     ]
+  },
+  "meta": {
+    "triggers": {
+      "poll": [
+        "#shopify-section-hero > .hero"
+      ]
+    }
   }
 }
