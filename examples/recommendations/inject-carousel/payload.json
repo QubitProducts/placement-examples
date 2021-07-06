@@ -7,7 +7,7 @@
         "name": "Product 1",
         "currency": "gbp",
         "unit_price": 10,
-        "image_url": "https://cdn.shopify.com/s/files/1/0011/6342/7898/products/Shirtdress_540x.jpg",
+        "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAAAM0lEQVR42u3PAQ0AAAgDIN8/9K3hHDQg7XQeiIiIiIiIiIiIiIiIiIiIiIiIiIiIiMhVC/cbWcU9+YsPAAAAAElFTkSuQmCC",
         "url": "https://example.qubit/1"
       }
     },
@@ -17,7 +17,7 @@
         "name": "Product 2",
         "currency": "gbp",
         "unit_price": 20,
-        "image_url": "https://cdn.shopify.com/s/files/1/0011/6342/7898/products/Midi_Wrap_Dress_540x.jpg",
+        "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAAAM0lEQVR42u3PAQ0AAAgDIN8/9K3hHDQgnXYeiIiIiIiIiIiIiIiIiIiIiIiIiIiIiMhVC9k5WcUJnBixAAAAAElFTkSuQmCC",
         "url": "https://example.qubit/2"
       }
     },
@@ -27,7 +27,7 @@
         "name": "Product 3",
         "currency": "gbp",
         "unit_price": 30,
-        "image_url": "https://cdn.shopify.com/s/files/1/0011/6342/7898/products/AZALEA-DRESS-BURGUNDY-22858__16718_thumb_feb84cf0-919f-4a6b-860c-7fb36fd4bca0_540x.jpg",
+        "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAAAM0lEQVR42u3PAQ0AAAgDIN8/9K3hHDQg03YeiIiIiIiIiIiIiIiIiIiIiIiIiIiIiMhVC7tXWcUFxFncAAAAAElFTkSuQmCC",
         "url": "https://example.qubit/3"
       }
     }

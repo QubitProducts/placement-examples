@@ -1,11 +1,11 @@
 {
-  "name": "inject-carousell",
+  "name": "inject-carousel",
   "version": "1.0.0",
   "description": "",
   "main": "placement.js",
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
-    "@qubit/utils": "^1.3.3",
+    "@qubit/utils": "^1.4.1",
     "preact": "^10.5.14"
   },
   "devDependencies": {
