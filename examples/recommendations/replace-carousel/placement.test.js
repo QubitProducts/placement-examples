@@ -16,7 +16,7 @@ describe('placement.js', () => {
       return renderPlacement(fixture.api)
     })
 
-    it('hides the existing caroucel', () => {
+    it('hides the existing carousel', () => {
       expect(
         window.getComputedStyle(document.querySelector('.recs')).display
       ).toEqual('none')
