@@ -1,7 +1,7 @@
 {
   "name": "placement-examples",
   "version": "1.0.0",
-  "description": "Qubit example placement builds for q4m",
+  "description": "A collection of example best practice Q4M placement implementations.",
   "main": "index.js",
   "author": "alan@qubit.com",
   "license": "ISC",
