@@ -19,22 +19,22 @@ module.exports = function renderPlacement ({
   const element = document.createElement('div')
   insertBefore(target, element)
 
+  // Emitting onImpression before branching into control/variant prevents bad splits
   onEnterViewport(element, onImpression)
-  onEvent(target.querySelector('a'), 'click', onClickthrough)
 
-  if (!content) return
-
-  const { message, image, link } = content
-
-  React.render(
-    <div className='Hero' style={{ backgroundImage: `url(${image})` }}>
-      <h2 className='Hero-title'>{message}</h2>
-      <a href={link} className='Hero-button' onClick={onClickthrough}>
-        Click here
-      </a>
-    </div>,
-    element
-  )
-
-  style(target, { display: 'none' })
+  if (content) {
+    const { message, image, link } = content
+    React.render(
+      <div className='Hero' style={{ backgroundImage: `url(${image})` }}>
+        <h2 className='Hero-title'>{message}</h2>
+        <a href={link} className='Hero-button' onClick={onClickthrough}>
+          Click here
+        </a>
+      </div>,
+      element
+    )
+    style(target, { display: 'none' })
+  } else {
+    onEvent(target.querySelector('a'), 'click', onClickthrough)
+  }
 }
