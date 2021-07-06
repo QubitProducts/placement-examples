@@ -1,0 +1,45 @@
+{
+  "name": "replace-banner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "placement.js",
+  "dependencies": {
+    "@glidejs/glide": "^3.4.1",
+    "@qubit/utils": "^1.4.1",
+    "preact": "^10.5.14"
+  },
+  "devDependencies": {
+    "@qubit/jest": "^1.4.0",
+    "healthier": "^4.0.0",
+    "jest": "^26.6.3",
+    "prettier-standard": "^15.0.1"
+  },
+  "jest": {
+    "transform": {
+      ".*(.js|.css|.less)$": "@qubit/jest"
+    }
+  },
+  "scripts": {
+    "lint": "healthier",
+    "format": "prettier-standard",
+    "test": "jest --coverage"
+  },
+  "healthier": {
+    "global": [
+      "describe",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "it",
+      "expect"
+    ]
+  },
+  "meta": {
+    "triggers": {
+      "poll": [
+        "#shopify-section-hero > .hero"
+      ]
+    }
+  }
+}

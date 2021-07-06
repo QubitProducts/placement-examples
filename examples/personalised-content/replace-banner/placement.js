@@ -1,0 +1,40 @@
+const React = require('preact')
+const {
+  style,
+  onEvent,
+  insertBefore,
+  onEnterViewport,
+  restoreAll
+} = require('@qubit/utils/dom')()
+
+module.exports = function renderPlacement ({
+  content,
+  onImpression,
+  onClickthrough,
+  onRemove,
+  elements: [target]
+}) {
+  onRemove(restoreAll)
+
+  const element = document.createElement('div')
+  insertBefore(target, element)
+
+  onEnterViewport(element, onImpression)
+  onEvent(target.querySelector('a'), 'click', onClickthrough)
+
+  if (!content) return
+
+  const { message, image, link } = content
+
+  React.render(
+    <div className='Hero' style={{ backgroundImage: `url(${image})` }}>
+      <h2 className='Hero-title'>{message}</h2>
+      <a href={link} className='Hero-button' onClick={onClickthrough}>
+        Click here
+      </a>
+    </div>,
+    element
+  )
+
+  style(target, { display: 'none' })
+}

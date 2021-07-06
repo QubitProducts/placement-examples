@@ -24,10 +24,7 @@ module.exports = function renderPlacement ({
 
   if (content) {
     onEnterViewport(target, () =>
-      onImpression(
-        'product',
-        content.recs.map(item => item.details.id)
-      )
+      onImpression('product', content.recs.map(item => item.details.id))
     )
     renderCarousel(content, el)
   }
