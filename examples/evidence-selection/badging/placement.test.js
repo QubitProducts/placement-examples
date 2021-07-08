@@ -33,10 +33,10 @@ describe('placement.js', () => {
     })
 
     it('cleans up after itself', () => {
-      const el = document.querySelector('.BadgePill').parentElement
-      expect(el.parentElement).toBeDefined()
+      const el = document.querySelector('.BadgePill')
+      expect(document.body.contains(el)).toBe(true)
       fixture.teardown()
-      expect(el.parentElement).toBeNull()
+      expect(document.body.contains(el)).toBe(false)
     })
   })
 

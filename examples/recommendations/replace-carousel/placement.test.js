@@ -79,9 +79,9 @@ describe('placement.js', () => {
 
     it('cleans up after itself', () => {
       const el = document.querySelector('.RecsContainer')
-      expect(document.body.contains(el)).toEqual(true)
+      expect(document.body.contains(el)).toBe(true)
       fixture.teardown()
-      expect(document.body.contains(el)).toEqual(false)
+      expect(document.body.contains(el)).toBe(false)
     })
   })
 

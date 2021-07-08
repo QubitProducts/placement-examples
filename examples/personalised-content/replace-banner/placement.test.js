@@ -45,13 +45,13 @@ describe('placement.js', () => {
     })
 
     it('cleans up after itself', () => {
-      const el = document.querySelector('.Hero').parentElement
-      expect(el.parentElement).toBeDefined()
+      const el = document.querySelector('.Hero')
+      expect(document.body.contains(el)).toBe(true)
       expect(window.getComputedStyle(fixture.api.elements[0]).display).toEqual(
         'none'
       )
       fixture.teardown()
-      expect(el.parentElement).toBeNull()
+      expect(document.body.contains(el)).toBe(false)
       expect(
         window.getComputedStyle(fixture.api.elements[0]).display
       ).not.toEqual('none')
