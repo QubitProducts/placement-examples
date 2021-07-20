@@ -4,7 +4,6 @@
   "description": "",
   "main": "placement.js",
   "dependencies": {
-    "@glidejs/glide": "^3.4.1",
     "@qubit/utils": "^1.4.1",
     "preact": "^10.5.14"
   },
