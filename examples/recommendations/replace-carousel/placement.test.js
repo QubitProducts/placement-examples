@@ -100,7 +100,6 @@ describe('placement.js', () => {
       expect(fixture.api.onClickthrough.mock.calls.length).toBe(0)
       container.click()
       expect(fixture.api.onClickthrough.mock.calls.length).toBe(1)
-      expect(fixture.api.onImpression.mock.calls.length).toBe(1)
     })
   })
 })
