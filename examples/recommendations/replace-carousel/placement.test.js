@@ -18,7 +18,7 @@ describe('placement.js', () => {
 
     it('hides the existing carousel', () => {
       expect(
-        window.getComputedStyle(document.querySelector('.recs')).display
+        window.getComputedStyle(document.querySelector('.Recs')).display
       ).toEqual('none')
     })
 
@@ -94,12 +94,20 @@ describe('placement.js', () => {
     it('calls onImpression', () => {
       expect(fixture.api.onImpression.mock.calls.length).toBe(1)
     })
+
+    it('calls onClickthough', () => {
+      const container = document.querySelector('.Recs')
+      expect(fixture.api.onClickthrough.mock.calls.length).toBe(0)
+      container.click()
+      expect(fixture.api.onClickthrough.mock.calls.length).toBe(1)
+      expect(fixture.api.onImpression.mock.calls.length).toBe(1)
+    })
   })
 })
 
 function createRecs () {
   const el = document.createElement('div')
-  el.className = 'recs'
+  el.className = 'Recs'
   document.body.append(el)
   return el
 }

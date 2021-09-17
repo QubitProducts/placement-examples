@@ -2,6 +2,7 @@ const React = require('preact')
 const {
   insertBefore,
   onEnterViewport,
+  onEvent,
   style,
   restoreAll
 } = require('@qubit/utils/dom')()
@@ -30,7 +31,7 @@ module.exports = function renderPlacement ({
     renderCarousel(content, el)
     style(target, { display: 'none' })
   } else {
-    emitProductEvents()
+    emitEvents()
   }
 
   function renderCarousel (content, el) {
@@ -81,7 +82,8 @@ module.exports = function renderPlacement ({
     )
   }
 
-  function emitProductEvents () {
-    // Emit product impression events and setup product clickthough handlers for the control
+  function emitEvents () {
+    // Emit product impression and clickthough events for the control
+    onEvent(target, 'click', onClickthrough)
   }
 }
