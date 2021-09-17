@@ -55,7 +55,7 @@ describe('placement.js', () => {
 function createTarget () {
   const el = document.createElement('div')
   el.className = 'Target'
-  el.innerHTML = `<div/>`
+  el.innerHTML = '<div/>'
   document.body.append(el)
   return el
 }
